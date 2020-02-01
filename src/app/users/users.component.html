@@ -1,8 +1,9 @@
-<h2>{{user.first_name}} {{user.last_name}}'s Details</h2>
-<div><span>id: </span>{{user.id}}</div>
-<div>
-  <label>name:
-    <input [(ngModel)]="user.first_name" placeholder="first name" />
-    <input [(ngModel)]="user.last_name" placeholder="last name" />
-  </label>
-</div>
+<ul class="users">
+  <li *ngFor="let user of users.data" [class.selected]="user === selectedUser" (click)="onSelect(user)">
+    <img class="avatar" src={{user.avatar}} height="50" width="50" />
+    <span class="id">{{user.id}}.</span>
+    <span class="name">{{user.first_name}} {{user.last_name}}</span>
+  </li>
+</ul>
+
+<app-user-detail [user]="selectedUser"></app-user-detail>

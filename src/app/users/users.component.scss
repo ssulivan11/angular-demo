@@ -1,0 +1,38 @@
+/* usersComponent's private CSS styles */
+.users {
+  padding: 0;
+  margin: 0;
+}
+
+.users li {
+  cursor: pointer;
+  position: relative;
+  background-color: #EEE;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 0.5em 0;
+}
+
+.users li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+}
+
+.users li.selected {
+  background-color: #CFD8DC;
+  color: white;
+}
+.users li.selected:hover {
+  background-color: #BBD8DC;
+  color: white;
+}
+
+.users .id {
+  margin: 0 .5em;
+  width: 25px;
+  text-align: center;
+  font-size: 1.25em;
+}
