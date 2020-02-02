@@ -1,3 +1,5 @@
+<h3>All Users</h3>
+
 <ul class="users">
   <li *ngFor="let user of users.data" [class.selected]="user === selectedUser" (click)="onSelect(user)">
     <img class="avatar" src={{user.avatar}} height="50" width="50" />

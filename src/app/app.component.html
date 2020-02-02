@@ -1,3 +1,11 @@
 <h1>{{title}}</h1>
+<hr />
+<nav>
+  <a routerLink="/dashboard">Dashboard</a> |&nbsp;
+  <a routerLink="/users">Users</a>
+</nav>
+<hr />
+
 <app-messages></app-messages>
-<app-users></app-users>
+
+<router-outlet></router-outlet>

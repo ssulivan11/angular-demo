@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import User from './users'
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-
-export class UsersComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   users = {};
-  selectedUser: User;
 
   constructor(private usersService: UserService) { }
 
@@ -21,10 +18,5 @@ export class UsersComponent implements OnInit {
   getUsers() {
     this.usersService.getUsers()
       .subscribe(users => this.users = users);
-  }
-
-
-  onSelect(user: User): void {
-    this.selectedUser = user;
   }
 }
