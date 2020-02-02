@@ -6,18 +6,16 @@ import { UserService } from '../user.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-
 export class UsersComponent implements OnInit {
   users = {};
 
-  constructor(private usersService: UserService) { }
+  constructor(private usersService: UserService) {}
 
   ngOnInit() {
     this.getUsers();
   }
 
   getUsers() {
-    this.usersService.getUsers()
-      .subscribe(users => this.users = users);
+    this.usersService.getUsers().subscribe(users => (this.users = users));
   }
 }

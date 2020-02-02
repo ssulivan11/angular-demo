@@ -9,14 +9,13 @@ import { UserService } from '../user.service';
 export class DashboardComponent implements OnInit {
   users = {};
 
-  constructor(private usersService: UserService) { }
+  constructor(private usersService: UserService) {}
 
   ngOnInit() {
     this.getUsers();
   }
 
   getUsers() {
-    this.usersService.getUsers()
-      .subscribe(users => this.users = users);
+    this.usersService.getUsers().subscribe(users => (this.users = users));
   }
 }
