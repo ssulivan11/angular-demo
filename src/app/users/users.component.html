@@ -1,11 +1,9 @@
 <h3>All Users</h3>
 
 <ul class="users">
-  <li *ngFor="let user of users.data" [class.selected]="user === selectedUser" (click)="onSelect(user)">
+  <li *ngFor="let user of users.data" routerLink="/detail/{{user.id}}">
     <img class="avatar" src={{user.avatar}} height="50" width="50" />
     <span class="id">{{user.id}}.</span>
     <span class="name">{{user.first_name}} {{user.last_name}}</span>
   </li>
 </ul>
-
-<app-user-detail [user]="selectedUser"></app-user-detail>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
-import User from './users'
 
 @Component({
   selector: 'app-users',
@@ -10,7 +9,6 @@ import User from './users'
 
 export class UsersComponent implements OnInit {
   users = {};
-  selectedUser: User;
 
   constructor(private usersService: UserService) { }
 
@@ -21,10 +19,5 @@ export class UsersComponent implements OnInit {
   getUsers() {
     this.usersService.getUsers()
       .subscribe(users => this.users = users);
-  }
-
-
-  onSelect(user: User): void {
-    this.selectedUser = user;
   }
 }
