@@ -8,6 +8,8 @@ import { UserService } from '../user.service';
 })
 export class UsersComponent implements OnInit {
   users = {};
+  totalPages = [];
+  activePage = 1;
 
   constructor(private usersService: UserService) {}
 
@@ -15,7 +17,19 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
-  getUsers() {
-    this.usersService.getUsers().subscribe(users => (this.users = users));
+  getUsers(page = 1) {
+    this.usersService.getUsers(page).subscribe(
+      users => (
+        (this.users = users),
+        (this.totalPages = Array(users.total_pages)
+          .fill(0)
+          .map((x, i) => i))
+      )
+    );
+  }
+
+  pageSelect(page: number) {
+    this.activePage = page;
+    this.getUsers(page);
   }
 }
