@@ -7,7 +7,7 @@
 .users li {
   cursor: pointer;
   position: relative;
-  background-color: #EEE;
+  background-color: #eee;
   list-style: none;
   display: flex;
   align-items: center;
@@ -17,21 +17,21 @@
 }
 
 .users li:hover {
-  color: #607D8B;
-  background-color: #DDD;
+  color: #607d8b;
+  background-color: #ddd;
 }
 
 .users li.selected {
-  background-color: #CFD8DC;
+  background-color: #cfd8dc;
   color: white;
 }
 .users li.selected:hover {
-  background-color: #BBD8DC;
+  background-color: #bbd8dc;
   color: white;
 }
 
 .users .id {
-  margin: 0 .5em;
+  margin: 0 0.5em;
   width: 25px;
   text-align: center;
   font-size: 1.25em;

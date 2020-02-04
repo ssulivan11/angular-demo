@@ -4,8 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import Users, { User } from './users/users';
-import { USERS } from './users/users-mock';
+import Users, { User } from '../components/users/users';
+import { USERS } from '../components/users/users-mock';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class UserService {
 
   getUsers(page = 1): Observable<Users> {
     return this.http.get<Users>(this.usersUrl(page)).pipe(
-      tap(_ => this.log('fetched heroes'))
+      tap(_ => this.log(`fetched users from page ${page}`))
       // catchError(this.handleError<Users>('getHeroes', []))
     );
   }
