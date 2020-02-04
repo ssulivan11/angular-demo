@@ -1,4 +1,6 @@
-# AngularDemo
+# My AngularDemo
+
+Just messing aroun with Angular8 and some demo test code.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
