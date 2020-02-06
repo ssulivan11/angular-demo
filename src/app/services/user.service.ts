@@ -26,8 +26,11 @@ export class UserService {
   }
 
   getUser(id: number): Observable<User> {
-    this.messageService.add(`UserService: fetched user id=${id}`);
-    return of(USERS.data.find(user => user.id === id));
+    console.warn('userService: ', id);
+    return this.http.get<User>(this.userUrl(id)).pipe(
+      tap(_ => this.log(`fetched user from id ${id}`))
+      // catchError(this.handleError<Users>('getHeroes', []))
+    );
   }
 
   /** Log a HeroService message with the MessageService */
@@ -37,6 +40,10 @@ export class UserService {
 
   private usersUrl(page: number) {
     return `https://reqres.in/api/users?per_page=4&page=${page}`;
+  }
+
+  private userUrl(id: number) {
+    return `https://reqres.in/api/users/${id}`;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

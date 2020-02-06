@@ -1,21 +1,22 @@
 <div *ngIf="user">
   <h2>
-    {{ user.first_name }} {{ user.last_name }}<span *ngIf="user.last_name.endsWith('s'); else elseBlock">'</span>
+    {{ user.data.first_name }} {{ user.data.last_name
+    }}<span *ngIf="user.data.last_name.endsWith('s'); else elseBlock">'</span>
     <ng-template #elseBlock>'s</ng-template>
     Details
-    <small> - <span>id: </span>{{ user.id }}</small>
+    <small> - <span>id: </span>{{ user.data.id }}</small>
   </h2>
 
   <div class="user-detail-container">
     <div>
-      <img class="avatar" src="{{ user.avatar }}" height="250" width="250" />
+      <img class="avatar" src="{{ user.data.avatar }}" height="250" width="250" />
     </div>
     <div>
-      <label>first name: <input [(ngModel)]="user.first_name" placeholder="first name" /> </label><br /><br />
-      <label>last name: <input [(ngModel)]="user.last_name" placeholder="last name" /> </label><br /><br />
+      <label>first name: <input [(ngModel)]="user.data.first_name" placeholder="first name" /> </label><br /><br />
+      <label>last name: <input [(ngModel)]="user.data.last_name" placeholder="last name" /> </label><br /><br />
       <label
         >email:
-        <input [(ngModel)]="user.email" placeholder="email" />
+        <input [(ngModel)]="user.data.email" placeholder="email" />
       </label>
     </div>
   </div>

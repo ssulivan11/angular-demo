@@ -1,11 +1,13 @@
 /* tslint:disable */
 
 export class User {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  avatar: string;
+  data: {
+    id: number;
+    first_name: string;
+    last_name: string;
+    email: string;
+    avatar: string;
+  };
 }
 
 export default class Users {
