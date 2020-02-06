@@ -4,46 +4,44 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import Users, { User } from '../components/users/users';
-import { USERS } from '../components/users/users-mock';
+import Teams, { Team } from '../components/teams-display/teams';
 import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class TeamsService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient, private messageService: MessageService) {}
 
-  getUsers(page = 1): Observable<Users> {
-    return this.http.get<Users>(this.usersUrl(page)).pipe(
-      tap(_ => this.log(`fetched users from page ${page}`))
-      // catchError(this.handleError<Users>('getHeroes', []))
+  getTeams(page = 1): Observable<Teams> {
+    return this.http.get<Teams>(this.teamsUrl()).pipe(
+      tap(_ => this.log(`fetched teams`))
+      // catchError(this.handleError<Teams>('getHeroes', []))
     );
   }
 
-  getUser(id: number): Observable<User> {
-    console.warn('userService: ', id);
-    return this.http.get<User>(this.userUrl(id)).pipe(
-      tap(_ => this.log(`fetched user from id ${id}`))
-      // catchError(this.handleError<Users>('getHeroes', []))
+  getTeam(id: number): Observable<Teams> {
+    return this.http.get<Teams>(this.teamUrl(id)).pipe(
+      tap(_ => this.log(`fetched team ${id}`))
+      // catchError(this.handleError<Teams>('getHeroes', []))
     );
   }
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`UserService: ${message}`);
+    this.messageService.add(`TeamsService: ${message}`);
   }
 
-  private usersUrl(page: number) {
-    return `https://reqres.in/api/users?per_page=4&page=${page}`;
+  private teamsUrl() {
+    return 'https://statsapi.web.nhl.com/api/v1/teams';
   }
 
-  private userUrl(id: number) {
-    return `https://reqres.in/api/users/${id}`;
+  private teamUrl(id: number) {
+    return `https://statsapi.web.nhl.com/api/v1/teams/${id}`;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -51,7 +49,7 @@ export class UserService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
+      // TODO: better job of transforming error for team consumption
       this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.

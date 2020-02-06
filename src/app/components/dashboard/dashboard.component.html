@@ -1,12 +1,20 @@
-<h2>Top Users</h2>
+<h2 class="mat-h2">Teams Dashboard</h2>
 
-<div class="dashboard-users">
-  <a *ngFor="let user of users.data | slice: 0:4" routerLink="/detail/{{ user.id }}">
-    <div class="module hero">
-      <img class="avatar" src="{{ user.avatar }}" height="150" width="150" />
-      <h4>
-        <span class="name">{{ user.first_name }} {{ user.last_name }}</span>
-      </h4>
-    </div>
-  </a>
+<div>
+  <mat-grid-list cols="3">
+    <mat-grid-tile *ngFor="let team of teams.teams" routerLink="/team/{{ team.id }}">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ team.locationName }}</mat-card-title>
+          <mat-card-subtitle>{{ team.name }}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          src="https://i2.wp.com/bellyupsports.com/wp-content/uploads/2018/11/{{
+            team.abbreviation === 'TBL' ? 'tb' : (team.abbreviation | lowercase)
+          }}.png"
+        />
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

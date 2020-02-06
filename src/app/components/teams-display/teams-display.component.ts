@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { TeamsService } from '../../services/team.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-teams-display',
+  templateUrl: './teams-display.component.html',
+  styleUrls: ['./teams-display.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class TeamsDisplayComponent implements OnInit {
   teams = {};
 
   constructor(private teamsService: TeamsService) {}
