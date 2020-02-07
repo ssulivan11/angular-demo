@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { TeamsDisplayComponent } from './components/teams-display/teams-display.component';
 import { TeamDetailComponent } from './components/team-details/team-detail.component';
 import { MessagesComponent } from './components/messages/messages.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { StandingsComponent } from './components/standings/standings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { GroupByPipe } from './groupby.pipe';
 import { MaterialModule } from './material-module';
@@ -19,7 +19,7 @@ import { MaterialModule } from './material-module';
     TeamsDisplayComponent,
     TeamDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    StandingsComponent
     // GroupByPipe
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialModule],

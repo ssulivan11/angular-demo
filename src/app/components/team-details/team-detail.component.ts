@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { TeamsService } from '../../services/team.service';
-import { Team } from '../teams-display/teams';
+import { NhlService } from '../../services/nhl.service';
+import { Team } from '../../type-definitions';
 
 @Component({
   selector: 'app-team-detail',
@@ -13,7 +13,7 @@ import { Team } from '../teams-display/teams';
 export class TeamDetailComponent implements OnInit {
   team: Team;
 
-  constructor(private route: ActivatedRoute, private teamsService: TeamsService, private location: Location) {}
+  constructor(private route: ActivatedRoute, private nhlService: NhlService, private location: Location) {}
 
   ngOnInit(): void {
     this.getTeam();
@@ -21,7 +21,7 @@ export class TeamDetailComponent implements OnInit {
 
   getTeam() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.teamsService.getTeam(id).subscribe(team => {
+    this.nhlService.getTeam(id).subscribe(team => {
       return (this.team = team.teams[0]);
     });
   }

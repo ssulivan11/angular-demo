@@ -12,5 +12,12 @@ body {
 }
 
 .content {
+  margin-top: 56px;
+  @media only screen and (min-width: 600px) {
+    margin-top: 64px;
+  }
+}
+
+.container {
   margin: 15px;
 }

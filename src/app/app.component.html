@@ -1,9 +1,10 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="primary-nav">
   <mat-toolbar-row>
-    {{ title }}
+    <img class="primary-nav__logo" src="{{ logo }}" />
+    <div class="primary-nav__title mat-h1">{{ title }}</div>
     <nav>
-      <button routerLink="/dashboard" mat-button>Dashboard</button>
-      <button routerLink="/teams" mat-button>Teams</button>
+      <button class="primary-nav__link" routerLink="/standings" mat-button>standings</button>
+      <button class="primary-nav__link" routerLink="/teams" mat-button>teams</button>
     </nav>
   </mat-toolbar-row>
 </mat-toolbar>

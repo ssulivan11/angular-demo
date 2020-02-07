@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'NHL';
+  title = 'Quick NHL';
+  logo = 'https://www.freepnglogos.com/uploads/nhl-logo-png/image-logo-nhl-1.png';
 }

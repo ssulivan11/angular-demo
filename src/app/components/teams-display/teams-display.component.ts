@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamsService } from '../../services/team.service';
+import { NhlService } from '../../services/nhl.service';
 
 @Component({
   selector: 'app-teams-display',
@@ -9,13 +9,13 @@ import { TeamsService } from '../../services/team.service';
 export class TeamsDisplayComponent implements OnInit {
   teams = {};
 
-  constructor(private teamsService: TeamsService) {}
+  constructor(private nhlService: NhlService) {}
 
   ngOnInit() {
     this.getTeams();
   }
 
   getTeams() {
-    this.teamsService.getTeams().subscribe(teams => (this.teams = teams));
+    this.nhlService.getTeams().subscribe(teams => (this.teams = teams));
   }
 }

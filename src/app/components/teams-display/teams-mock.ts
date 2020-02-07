@@ -1,6 +1,5 @@
 /* tslint:disable */
-
-import Teams from './teams';
+import Teams from '../../type-definitions';
 
 export const TEAMS: Teams = {
   copyright:
