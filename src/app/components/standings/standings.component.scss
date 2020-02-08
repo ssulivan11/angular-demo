@@ -1,3 +1,15 @@
+.standings-toolbar {
+  display: flex;
+
+  &__title {
+    flex-grow: 1;
+  }
+
+  &__toggle {
+    font-size: 0.75em;
+  }
+}
+
 .standings {
   display: grid;
   grid-template-columns: 1fr;
@@ -36,8 +48,8 @@
       max-height: 20px;
 
       @media only screen and (min-width: 1025px) {
-        max-width: 35px;
-        max-height: 35px;
+        max-width: 25px;
+        max-height: 25px;
       }
     }
   }

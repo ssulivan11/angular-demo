@@ -8,19 +8,43 @@ import { Standings } from '../../type-definitions';
   styleUrls: ['./standings.component.scss']
 })
 export class StandingsComponent implements OnInit {
-  standings = {};
   displayedColumns: string[] = ['Team', 'GP', 'W', 'L', 'OTL', 'Pts', 'GF', 'GA', 'Diff', 'Strk'];
+  selectedView: string;
+
+  conferenceStandings = {};
+  divisionStandings = {};
 
   constructor(private nhlService: NhlService) {}
 
   ngOnInit() {
-    this.getStandings();
+    this.getStandings('conference');
+    this.selectedView = 'conference';
   }
 
-  getStandings() {
-    this.nhlService.getStandings().subscribe(standings => {
-      this.standings = standings;
-    });
+  getStandings(selectedView: string) {
+    const isByConference = selectedView === 'conference';
+    if (isByConference) {
+      if (!Object.keys(this.conferenceStandings).length) {
+        this.nhlService.getStandings(isByConference).subscribe(standings => {
+          this.conferenceStandings = standings;
+        });
+      } else {
+        return this.conferenceStandings;
+      }
+    } else {
+      if (!Object.keys(this.divisionStandings).length) {
+        this.nhlService.getStandings(isByConference).subscribe(standings => {
+          this.divisionStandings = standings;
+        });
+      } else {
+        return this.divisionStandings;
+      }
+    }
+  }
+
+  onViewChange(val: string) {
+    this.getStandings(val);
+    this.selectedView = val;
   }
 
   getTeamAbbreviation(team: string) {

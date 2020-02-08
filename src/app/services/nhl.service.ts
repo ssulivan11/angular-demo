@@ -15,9 +15,12 @@ export class NhlService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  conferenceStandings = {};
+  divisionStandings = {};
+
   constructor(private http: HttpClient, private messageService: MessageService) {}
 
-  getTeams(page = 1): Observable<Teams> {
+  getTeams(): Observable<Teams> {
     return this.http.get<Teams>(this.teamsApiUrl()).pipe(
       tap(_ => this.log(`fetched teams`))
       // catchError(this.handleError<Teams>('getHeroes', []))
@@ -31,8 +34,8 @@ export class NhlService {
     );
   }
 
-  getStandings(): Observable<Standings> {
-    return this.http.get<Standings>(this.standingsApiUrl()).pipe(
+  getStandings(isByConference: boolean): Observable<Standings> {
+    return this.http.get<Standings>(this.standingsApiUrl(isByConference)).pipe(
       tap(_ => this.log(`fetched standings`))
       // catchError(this.handleError<Teams>('getHeroes', []))
     );
@@ -51,8 +54,8 @@ export class NhlService {
     return `https://statsapi.web.nhl.com/api/v1/teams/${id}`;
   }
 
-  private standingsApiUrl() {
-    return 'https://statsapi.web.nhl.com/api/v1/standings';
+  private standingsApiUrl(isByConference: boolean) {
+    return `https://statsapi.web.nhl.com/api/v1/standings${isByConference ? '/byConference' : ''}`;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
