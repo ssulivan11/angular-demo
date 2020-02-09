@@ -1,0 +1,33 @@
+.teams-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+
+  @media only screen and (min-width: 1025px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &__card {
+    display: flex;
+  }
+  .mat-card {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+
+    small {
+      display: block;
+      color: #666;
+    }
+  }
+
+  &__image {
+    width: 75px;
+    margin-right: 15px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

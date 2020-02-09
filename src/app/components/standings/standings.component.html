@@ -27,7 +27,7 @@
           <!-- TEAM NAME -->
           <ng-container matColumnDef="Team">
             <th mat-header-cell *matHeaderCellDef>Team</th>
-            <td mat-cell *matCellDef="let element">
+            <td mat-cell *matCellDef="let element" routerLink="/team/{{ element.team.id }}">
               <div class="standings__team-name">
                 <img
                   src="https://i2.wp.com/bellyupsports.com/wp-content/uploads/2018/11/{{
@@ -108,7 +108,7 @@
             <!-- TEAM NAME -->
             <ng-container matColumnDef="Team">
               <th mat-header-cell *matHeaderCellDef>Team</th>
-              <td mat-cell *matCellDef="let element">
+              <td mat-cell *matCellDef="let element" routerLink="/team/{{ element.team.id }}">
                 <div class="standings__team-name">
                   <img
                     src="https://i2.wp.com/bellyupsports.com/wp-content/uploads/2018/11/{{

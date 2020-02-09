@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { NhlService } from '../../services/nhl.service';
 import { Team } from '../../type-definitions';
+import getTeamAbbreviation from '../../config/getTeamAbbreviation';
 
 @Component({
   selector: 'app-team-detail',
@@ -12,6 +13,7 @@ import { Team } from '../../type-definitions';
 })
 export class TeamDetailComponent implements OnInit {
   team: Team;
+  displayedColumns: string[] = ['Name', 'Number', 'Position'];
 
   constructor(private route: ActivatedRoute, private nhlService: NhlService, private location: Location) {}
 
@@ -28,5 +30,9 @@ export class TeamDetailComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  getTeamAbbreviation(team: string) {
+    return getTeamAbbreviation(team);
   }
 }

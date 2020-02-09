@@ -12,6 +12,7 @@ import { StandingsComponent } from './components/standings/standings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { GroupByPipe } from './groupby.pipe';
 import { MaterialModule } from './material-module';
+import { PlayerInfoComponent } from './components/player-info/player-info.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MaterialModule } from './material-module';
     TeamsDisplayComponent,
     TeamDetailComponent,
     MessagesComponent,
-    StandingsComponent
+    StandingsComponent,
+    PlayerInfoComponent
     // GroupByPipe
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MaterialModule],

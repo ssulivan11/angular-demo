@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NhlService } from '../../services/nhl.service';
+import getTeamAbbreviation from '../../config/getTeamAbbreviation';
 
 @Component({
   selector: 'app-teams-display',
@@ -17,5 +18,9 @@ export class TeamsDisplayComponent implements OnInit {
 
   getTeams() {
     this.nhlService.getTeams().subscribe(teams => (this.teams = teams));
+  }
+
+  getTeamAbbreviation(team: string) {
+    return getTeamAbbreviation(team);
   }
 }

@@ -1,13 +1,27 @@
-<mat-toolbar color="primary" class="primary-toolbar">
+<mat-toolbar>
   <mat-toolbar-row>
-    <h1 class="mat-h3">Teams</h1>
+    <h1 class="mat-h3">All NHL Teams</h1>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-list>
-  <h3 mat-subheader>Teams</h3>
-  <mat-list-item *ngFor="let team of teams.teams" routerLink="/team/{{ team.id }}">
-    <h4 mat-line>{{ team.abbreviation }} -- {{ team.name }}</h4>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-</mat-list>
+<div class="container">
+  <div class="teams-display">
+    <div *ngFor="let team of teams.teams" routerLink="/team/{{ team.id }}" class="teams-display__card">
+      <mat-card routerLink="/team/{{ team.id }}">
+        <div class="teams-display__image">
+          <img
+            width="200"
+            height="200"
+            src="https://i2.wp.com/bellyupsports.com/wp-content/uploads/2018/11/{{
+              getTeamAbbreviation(team.name)
+            }}.png"
+          />
+        </div>
+        <div>
+          <strong>{{ team.name }}</strong>
+          <small>{{ team.abbreviation }}</small>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

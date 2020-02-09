@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import Teams, { Standings } from '../type-definitions';
+import Teams, { Standings, Player } from '../type-definitions';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -29,7 +29,7 @@ export class NhlService {
 
   getTeam(id: number): Observable<Teams> {
     return this.http.get<Teams>(this.teamApiUrl(id)).pipe(
-      tap(_ => this.log(`fetched team ${id}`))
+      tap(_ => this.log(`fetched team - ${id}`))
       // catchError(this.handleError<Teams>('getHeroes', []))
     );
   }
@@ -37,6 +37,13 @@ export class NhlService {
   getStandings(isByConference: boolean): Observable<Standings> {
     return this.http.get<Standings>(this.standingsApiUrl(isByConference)).pipe(
       tap(_ => this.log(`fetched standings`))
+      // catchError(this.handleError<Teams>('getHeroes', []))
+    );
+  }
+
+  getPlayer(id: number): Observable<Player> {
+    return this.http.get<Player>(this.playerApiUrl(id)).pipe(
+      tap(_ => this.log(`fetched player - ${id}`))
       // catchError(this.handleError<Teams>('getHeroes', []))
     );
   }
@@ -51,11 +58,15 @@ export class NhlService {
   }
 
   private teamApiUrl(id: number) {
-    return `https://statsapi.web.nhl.com/api/v1/teams/${id}`;
+    return `https://statsapi.web.nhl.com/api/v1/teams/${id}?expand=team.roster`;
   }
 
   private standingsApiUrl(isByConference: boolean) {
     return `https://statsapi.web.nhl.com/api/v1/standings${isByConference ? '/byConference' : ''}`;
+  }
+
+  private playerApiUrl(id: number) {
+    return `https://statsapi.web.nhl.com/api/v1/people/${id}`;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
