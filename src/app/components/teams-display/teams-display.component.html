@@ -5,7 +5,7 @@
 </mat-toolbar>
 
 <div class="container">
-  <div class="teams-display">
+  <div class="teams-display" *ngIf="teams">
     <div *ngFor="let team of teams.teams" routerLink="/team/{{ team.id }}" class="teams-display__card">
       <mat-card routerLink="/team/{{ team.id }}">
         <div class="teams-display__image">

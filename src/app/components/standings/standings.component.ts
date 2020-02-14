@@ -12,8 +12,8 @@ export class StandingsComponent implements OnInit {
   displayedColumns: string[] = ['Team', 'GP', 'W', 'L', 'OTL', 'Pts', 'GF', 'GA', 'Diff', 'Strk'];
   selectedView: string;
 
-  conferenceStandings = {};
-  divisionStandings = {};
+  conferenceStandings: Standings;
+  divisionStandings: Standings;
 
   constructor(private nhlService: NhlService) {}
 
@@ -25,7 +25,7 @@ export class StandingsComponent implements OnInit {
   getStandings(selectedView: string) {
     const isByConference = selectedView === 'conference';
     if (isByConference) {
-      if (!Object.keys(this.conferenceStandings).length) {
+      if (!this.conferenceStandings) {
         this.nhlService.getStandings(isByConference).subscribe(standings => {
           this.conferenceStandings = standings;
         });
@@ -33,7 +33,7 @@ export class StandingsComponent implements OnInit {
         return this.conferenceStandings;
       }
     } else {
-      if (!Object.keys(this.divisionStandings).length) {
+      if (!this.divisionStandings) {
         this.nhlService.getStandings(isByConference).subscribe(standings => {
           this.divisionStandings = standings;
         });

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { NhlService } from '../../services/nhl.service';
+import { Player, PlayerStats } from '../../type-definitions';
 
 @Component({
   selector: 'app-player-info',
@@ -9,8 +10,10 @@ import { NhlService } from '../../services/nhl.service';
   styleUrls: ['./player-info.component.scss']
 })
 export class PlayerInfoComponent implements OnInit {
-  player = {};
-  stats = {};
+  player: Player;
+  stats: PlayerStats;
+
+  displayedColumns: string[] = ['Season', 'Team', 'Games', 'Goals', 'Assists', 'Points', 'PlusMinus', 'PIM'];
 
   constructor(private route: ActivatedRoute, private nhlService: NhlService) {}
 
@@ -20,11 +23,13 @@ export class PlayerInfoComponent implements OnInit {
 
   getPlayer() {
     const id = +this.route.snapshot.paramMap.get('id');
+
     this.nhlService.getPlayer(id).subscribe(player => {
-      // this.nhlService.getPlayerStats(id).subscribe(stats => {
-      //   return (this.stats = player.people[0].stats);
-      // });
-      return (this.player = player.people[0]);
+      return (this.player = player);
+    });
+
+    this.nhlService.getPlayerStats(id).subscribe(stats => {
+      return (this.stats = stats);
     });
   }
 

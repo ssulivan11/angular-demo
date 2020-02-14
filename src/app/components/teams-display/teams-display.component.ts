@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NhlService } from '../../services/nhl.service';
 import getTeamAbbreviation from '../../config/getTeamAbbreviation';
+import Teams from '../../type-definitions';
 
 @Component({
   selector: 'app-teams-display',
@@ -8,7 +9,7 @@ import getTeamAbbreviation from '../../config/getTeamAbbreviation';
   styleUrls: ['./teams-display.component.scss']
 })
 export class TeamsDisplayComponent implements OnInit {
-  teams = {};
+  teams: Teams;
 
   constructor(private nhlService: NhlService) {}
 

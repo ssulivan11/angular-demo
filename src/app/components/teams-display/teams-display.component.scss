@@ -9,6 +9,10 @@
 
   &__card {
     display: flex;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
   .mat-card {
     flex-grow: 1;

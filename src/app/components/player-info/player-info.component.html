@@ -1,22 +1,91 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <h1 class="mat-h3">{{ player.fullName }}</h1>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div *ngIf="player">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <h1 class="mat-h3">{{ player.people[0].fullName }} #{{ player.people[0].primaryNumber }}</h1>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-<div class="container player-info">
-  <img src="https://nhl.bamcontent.com/images/headshots/current/168x168/{{ player.id }}@3x.jpg" />
-  <div>
-    <ul>
-      <li>#{{ player.primaryNumber }}</li>
-      <li>Weight: {{ player.weight }}lbs</li>
-      <li>Height: {{ player.height }}</li>
-      <li>Age: {{ player.currentAge }}</li>
-      <li>Nat: {{ player.nationality }}</li>
-      <li>Birthplace: {{ player.birthCity }}</li>
-      <li>Shoots: {{ player.shootsCatches }}</li>
-      <li *ngIf="player.captain">C</li>
-      <li *ngIf="player.alternateCaptain">A</li>
-    </ul>
+  <div class="container">
+    <h2 class="mat-h2">{{ player.people[0].currentTeam.name }}</h2>
+
+    <div class="player-info">
+      <img src="https://nhl.bamcontent.com/images/headshots/current/168x168/{{ player.people[0].id }}@3x.jpg" />
+      <div>
+        <ul>
+          <li><strong>Weight:</strong> {{ player.people[0].weight }}lbs</li>
+          <li><strong>Height:</strong> {{ player.people[0].height }}</li>
+          <li><strong>Age:</strong> {{ player.people[0].currentAge }}</li>
+          <li><strong>Nat:</strong> {{ player.people[0].nationality }}</li>
+          <li><strong>Birthplace:</strong> {{ player.people[0].birthCity }}</li>
+          <li><strong>Shoots:</strong> {{ player.people[0].shootsCatches }}</li>
+          <li *ngIf="player.people[0].captain">C</li>
+          <li *ngIf="player.people[0].alternateCaptain">A</li>
+        </ul>
+      </div>
+    </div>
+
+    <br />
+    <br />
+
+    <table *ngIf="stats" mat-table [dataSource]="stats.stats[0].splits" class="player-stats mat-elevation-z8">
+      <ng-container matColumnDef="Season">
+        <th mat-header-cell *matHeaderCellDef>Season</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.season.slice(0, 4) + '/' + element.season.slice(4) }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Team">
+        <th mat-header-cell *matHeaderCellDef>Team</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.team.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Games">
+        <th mat-header-cell *matHeaderCellDef>Games</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stat.games }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Goals">
+        <th mat-header-cell *matHeaderCellDef>Goals</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stat.goals }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Assists">
+        <th mat-header-cell *matHeaderCellDef>Assists</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stat.assists }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Points">
+        <th mat-header-cell *matHeaderCellDef>Points</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stat.points }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="PlusMinus">
+        <th mat-header-cell *matHeaderCellDef>PlusMinus</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stat.plusMinus }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="PIM">
+        <th mat-header-cell *matHeaderCellDef>PIM</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.stat.pim }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumns" [ngClass]="{ grayRow: even }"></tr>
+    </table>
   </div>
 </div>

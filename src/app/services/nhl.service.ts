@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import Teams, { Standings, Player } from '../type-definitions';
+import Teams, { Standings, Player, PlayerStats } from '../type-definitions';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -48,6 +48,14 @@ export class NhlService {
     );
   }
 
+  getPlayerStats(id: number): Observable<PlayerStats> {
+    return this.http.get<PlayerStats>(this.playerStatsApiUrl(id)).pipe(
+      tap(_ => this.log(`fetched player stats- ${id}`))
+
+      // catchError(this.handleError<Teams>('getHeroes', []))
+    );
+  }
+
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`NHL-Service: ${message}`);
@@ -67,6 +75,10 @@ export class NhlService {
 
   private playerApiUrl(id: number) {
     return `https://statsapi.web.nhl.com/api/v1/people/${id}`;
+  }
+
+  private playerStatsApiUrl(id: number) {
+    return `https://statsapi.web.nhl.com/api/v1/people/${id}/stats?stats=yearByYear`;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

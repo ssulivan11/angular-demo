@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { NhlService } from '../../services/nhl.service';
-import { Team } from '../../type-definitions';
+import { RosterTeam } from '../../type-definitions';
 import getTeamAbbreviation from '../../config/getTeamAbbreviation';
 
 @Component({
@@ -12,7 +12,7 @@ import getTeamAbbreviation from '../../config/getTeamAbbreviation';
   styleUrls: ['./team-detail.component.scss']
 })
 export class TeamDetailComponent implements OnInit {
-  team: Team;
+  team: RosterTeam;
   displayedColumns: string[] = ['Name', 'Number', 'Position'];
 
   constructor(private route: ActivatedRoute, private nhlService: NhlService, private location: Location) {}
