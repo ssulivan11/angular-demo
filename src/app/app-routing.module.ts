@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UsersComponent } from './components/users/users.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { TeamsDisplayComponent } from './components/teams-display/teams-display.component';
+import { TeamDetailComponent } from './components/team-details/team-detail.component';
+import { StandingsComponent } from './components/standings/standings.component';
+import { PlayerInfoComponent } from './components/player-info/player-info.component';
 
 const routes: Routes = [
-  { path: 'users', component: UsersComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'detail/:id', component: UserDetailComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+  { path: 'teams', component: TeamsDisplayComponent },
+  { path: 'standings', component: StandingsComponent },
+  { path: 'team/:id', component: TeamDetailComponent },
+  { path: 'player/:id', component: PlayerInfoComponent },
+  { path: '', redirectTo: '/standings', pathMatch: 'full' }
 ];
 
 @NgModule({

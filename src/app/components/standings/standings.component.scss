@@ -1,0 +1,63 @@
+.standings-toolbar {
+  display: flex;
+
+  &__title {
+    flex-grow: 1;
+  }
+
+  &__toggle {
+    font-size: 0.75em;
+  }
+}
+
+.standings {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 15px;
+
+  @media only screen and (min-width: 1025px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  table {
+    margin-bottom: 25px;
+    width: 100%;
+
+    td:hover {
+      &:first-of-type {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+
+    th.mat-header-cell,
+    .mat-cell {
+      padding: 8px;
+
+      &:first-of-type {
+        padding: 8px 8px 8px 16px;
+      }
+
+      &:last-of-type {
+        padding: 8px 16px 8px 8px;
+      }
+    }
+  }
+
+  &__team-name {
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 5px;
+
+      max-width: 20px;
+      max-height: 20px;
+
+      @media only screen and (min-width: 1025px) {
+        max-width: 25px;
+        max-height: 25px;
+      }
+    }
+  }
+}

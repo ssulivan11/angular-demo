@@ -1,11 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/purple-green.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html,
 body {
   height: 100%;
+  width: 100%;
 }
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.content {
+  min-height: 100vh;
+  margin-top: 56px;
+  @media only screen and (min-width: 600px) {
+    margin-top: 64px;
+  }
+}
+
+.container {
+  margin: 15px 15px 100px;
+}
+
+.grayRow {
+  background-color: #f9f9f9;
 }

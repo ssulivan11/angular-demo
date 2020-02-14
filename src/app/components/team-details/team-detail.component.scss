@@ -1,0 +1,39 @@
+.team-detail {
+  display: flex;
+  align-items: center;
+
+  &__image {
+    width: 100px;
+    margin-right: 15px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__basic {
+    margin-right: 25px;
+  }
+
+  &__player-table {
+    width: 100%;
+    margin-top: 50px;
+  }
+
+  &__player-info {
+    display: flex;
+    align-items: center;
+  }
+
+  &__player-image {
+    width: 60px;
+    margin: 5px 15px 5px 0;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 100%;
+    }
+  }
+}

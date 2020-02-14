@@ -1,0 +1,27 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <h1 class="mat-h3">All NHL Teams</h1>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+  <div class="teams-display" *ngIf="teams">
+    <div *ngFor="let team of teams.teams" routerLink="/team/{{ team.id }}" class="teams-display__card">
+      <mat-card routerLink="/team/{{ team.id }}">
+        <div class="teams-display__image">
+          <img
+            width="200"
+            height="200"
+            src="https://i2.wp.com/bellyupsports.com/wp-content/uploads/2018/11/{{
+              getTeamAbbreviation(team.name)
+            }}.png"
+          />
+        </div>
+        <div>
+          <strong>{{ team.name }}</strong>
+          <small>{{ team.abbreviation }}</small>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

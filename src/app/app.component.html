@@ -1,9 +1,19 @@
-<h1>{{title}}</h1>
-<hr />
-<nav>
-  <a routerLink="/dashboard">Dashboard</a> |&nbsp;
-  <a routerLink="/users">Users</a>
-</nav>
-<hr />
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<mat-toolbar color="primary" class="primary-nav">
+  <mat-toolbar-row>
+    <img class="primary-nav__logo" src="{{ logo }}" />
+    <div class="primary-nav__title mat-h1">{{ title }}</div>
+    <nav>
+      <button class="primary-nav__link" routerLink="/standings" mat-button>standings</button>
+      <button class="primary-nav__link" routerLink="/teams" mat-button>teams</button>
+    </nav>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
+</div>
+
+<mat-toolbar color="primary" class="footer">
+  <mat-toolbar-row></mat-toolbar-row>
+</mat-toolbar>
