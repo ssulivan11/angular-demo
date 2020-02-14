@@ -32,7 +32,16 @@
       <ng-container matColumnDef="Name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element" routerLink="/player/{{ element.person.id }}">
-          {{ element.person.fullName }}
+          <div class="team-detail__player-info">
+            <div class="team-detail__player-image">
+              <img
+                width="50"
+                height="50"
+                src="https://nhl.bamcontent.com/images/headshots/current/168x168/{{ element.person.id }}@2x.jpg"
+              />
+            </div>
+            <strong>{{ element.person.fullName }}</strong>
+          </div>
         </td>
       </ng-container>
 

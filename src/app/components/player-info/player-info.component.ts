@@ -10,6 +10,7 @@ import { NhlService } from '../../services/nhl.service';
 })
 export class PlayerInfoComponent implements OnInit {
   player = {};
+  stats = {};
 
   constructor(private route: ActivatedRoute, private nhlService: NhlService) {}
 
@@ -20,7 +21,10 @@ export class PlayerInfoComponent implements OnInit {
   getPlayer() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.nhlService.getPlayer(id).subscribe(player => {
-      return (this.player = player);
+      // this.nhlService.getPlayerStats(id).subscribe(stats => {
+      //   return (this.stats = player.people[0].stats);
+      // });
+      return (this.player = player.people[0]);
     });
   }
 

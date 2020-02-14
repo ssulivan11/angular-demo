@@ -23,4 +23,20 @@
       background-color: #f9f9f9;
     }
   }
+
+  &__player-info {
+    display: flex;
+    align-items: center;
+  }
+
+  &__player-image {
+    width: 60px;
+    margin: 5px 15px 5px 0;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 100%;
+    }
+  }
 }

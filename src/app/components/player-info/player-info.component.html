@@ -1,5 +1,22 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <h1 class="mat-h3">{{ player.people[0].fullName }}</h1>
+    <h1 class="mat-h3">{{ player.fullName }}</h1>
   </mat-toolbar-row>
 </mat-toolbar>
+
+<div class="container player-info">
+  <img src="https://nhl.bamcontent.com/images/headshots/current/168x168/{{ player.id }}@3x.jpg" />
+  <div>
+    <ul>
+      <li>#{{ player.primaryNumber }}</li>
+      <li>Weight: {{ player.weight }}lbs</li>
+      <li>Height: {{ player.height }}</li>
+      <li>Age: {{ player.currentAge }}</li>
+      <li>Nat: {{ player.nationality }}</li>
+      <li>Birthplace: {{ player.birthCity }}</li>
+      <li>Shoots: {{ player.shootsCatches }}</li>
+      <li *ngIf="player.captain">C</li>
+      <li *ngIf="player.alternateCaptain">A</li>
+    </ul>
+  </div>
+</div>
